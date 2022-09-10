@@ -1,0 +1,255 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  --lgv: hsl(270, 3%, 87%);
+  --dgv: hsl(279, 6%, 55%);
+  --vdv: hsl(278, 68%, 11%);
+  --lg: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  --red: hsl(0, 100%, 66%);
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-weight: 500;
+  src: url("./Fonts/SpaceGrotesk-Regular.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk";
+}
+
+body {
+  height: 100vh;
+  /* overflow-y: hidden; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 280px;
+}
+
+section {
+  display: flex;
+  min-height: 700px;
+  height: 100vh;
+}
+
+section .cards,
+.cards .card-front,
+.card-front .body,
+form,
+form > div:not(.date),
+form .date > div {
+  display: flex;
+  flex-direction: column;
+}
+
+section .cards {
+  background: url("./images/bg-main-desktop.png") center/cover no-repeat;
+  width: 25%;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 18px;
+}
+
+/* **************** CARD FRONT **************** */
+
+.cards .card-front {
+  justify-content: center;
+  background: url("./images/bg-card-front.png") center/cover no-repeat;
+  gap: 1.5rem;
+  position: relative;
+  left: 35%;
+  min-height: max-content;
+  padding: 20px 10px;
+}
+
+.card-front img {
+  height: 1.5rem;
+}
+
+.card-front .body {
+  gap: 0.8rem;
+}
+
+.card-front .footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-front .content {
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* **************** CARD BACK **************** */
+
+.cards .card-back {
+  background: url("./images/bg-card-back.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+  left: 50%;
+  min-height: 200px;
+}
+
+.card-back #cvcContainer {
+  margin-right: 10px;
+}
+
+.cards .card-back,
+.cards .card-front {
+  min-height: 25%;
+  color: var(--white);
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  width: 80%;
+  min-width: 300px;
+}
+
+/* ***************** FORM SECTION ****************** */
+
+section .form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+}
+
+form {
+  gap: 1rem;
+  width: 50%;
+}
+
+form div {
+  gap: 10px;
+}
+
+form label {
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vdv);
+}
+
+form input {
+  color: var(--dgv);
+  border: 2px solid var(--lgv);
+  height: 2rem;
+  border-radius: 5px;
+  outline: 0;
+  padding: 0.5rem;
+}
+
+form input:focus {
+  color: var(--vdv);
+  border: 2.5px solid var(--vdv);
+}
+
+form .date {
+  display: flex;
+  gap: 10px;
+}
+
+form .date > div {
+  width: 50%;
+}
+
+form .date > div:nth-child(1) input {
+  width: 40%;
+}
+
+button {
+  border: 2px solid var(--vdv);
+  color: var(--white);
+  background: var(--vdv);
+  height: 2rem;
+  border-radius: 5px;
+}
+
+.error input {
+  border-color: var(--red);
+}
+
+.error span {
+  color: var(--red);
+}
+
+.attribution {
+  display: none;
+  font-size: 15px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 61%, 23%);
+}
+
+.completed {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.completed img {
+  width: 3rem;
+}
+
+.completed button {
+  width: 100%;
+}
+
+@media screen and (max-width: 375px) {
+  * {
+    font-size: 95%;
+  }
+
+  section {
+    display: block;
+  }
+
+  section .cards {
+    flex-direction: column-reverse;
+    width: 100vw;
+    height: 40vh;
+  }
+
+  .cards .card-front,
+  .cards .card-back {
+    position: absolute;
+    margin: 0 auto;
+    height: 20vh;
+    min-width: 0;
+    width: 80%;
+  }
+
+  .cards .card-front {
+    left: 5%;
+    transform: translateY(60%);
+    gap: 1rem;
+    z-index: 99;
+  }
+
+  .card-front .content {
+    letter-spacing: 2px;
+  }
+
+  .cards .card-back {
+    left: calc(20vw - 10px);
+  }
+
+  section .form {
+    margin-top: 4rem;
+    width: 100vw;
+  }
+
+  .form form {
+    width: 90vw;
+  }
+}
